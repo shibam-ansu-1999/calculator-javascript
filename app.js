@@ -62,9 +62,33 @@ $(document).ready(function (){
             $('#result').text(firstNumber ** secondNumber);
         }
         else if(operator === '%'){
-            $('#result').text(firstNumber / 100);
+            $('#result').text((firstNumber / 100).toFixed(6));
+        }
+        else if(operator === "sin"){
+            $('#result').text(Math.sin(secondNumber*Math.PI/180).toFixed(2));
+        }
+        else if(operator === "cos"){
+            $('#result').text(Math.cos(secondNumber*Math.PI/180).toFixed(2));
+        }
+        else if(operator === "tan"){
+            if(secondNumber < 90){
+                $('#result').text(Math.tan(secondNumber*Math.PI/180).toFixed(2));
+            }
+            else{
+                $('#result').text("Syntax Error");
+            }
+        }
+        else if(operator === "ln"){
+            $('#result').text(Math.log(secondNumber).toFixed(3));
         }
 
+    })
+
+    $('.function').click(function (){
+        operator = $(this).text();
+        $('#result').text(0);
+
+        secondNumber = Number($('#result').text());
     })
 
 })
